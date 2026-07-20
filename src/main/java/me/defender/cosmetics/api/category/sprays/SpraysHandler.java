@@ -1,5 +1,3 @@
-
-
 package me.defender.cosmetics.api.category.sprays;
 
 import com.andrei1058.bedwars.api.events.gameplay.GameStateChangeEvent;
@@ -25,7 +23,8 @@ public class SpraysHandler implements Listener
             ItemFrame itemFrame = (ItemFrame) e.getRightClicked();
             if(itemFrame.getItem() == null) return;
             String selected = new BwcAPI().getSelectedCosmetic(p, CosmeticsType.Sprays);
-            if(itemFrame.getItem().getType() == Material.AIR || itemFrame.getItem().getType() == Material.MAP || itemFrame.getItem().getType() == Material.EMPTY_MAP) {
+            // Исправлено: Material.EMPTY_MAP заменен на Material.FILLED_MAP
+            if(itemFrame.getItem().getType() == Material.AIR || itemFrame.getItem().getType() == Material.MAP || itemFrame.getItem().getType() == Material.FILLED_MAP) {
                 for(Spray spray : StartupUtils.sprayList){
                     if(spray.getIdentifier().equals(selected)){
                         spray.execute(p, itemFrame);
