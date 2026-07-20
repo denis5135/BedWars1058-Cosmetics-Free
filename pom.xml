@@ -125,13 +125,13 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- BedWars1058 API v25.2 (локальный jar) -->
+        <!-- BedWars1058 v25.2 (локальный jar) -->
         <dependency>
             <groupId>com.andrei1058.bedwars</groupId>
             <artifactId>bedwars-api</artifactId>
             <version>25.2</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/bedwars-plugin.jar</systemPath>
+            <systemPath>${project.basedir}/lib/bedwars-plugin-25.2.jar</systemPath>
         </dependency>
 
         <!-- Vault API -->
