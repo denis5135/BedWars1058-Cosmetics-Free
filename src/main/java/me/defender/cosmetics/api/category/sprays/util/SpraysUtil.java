@@ -92,7 +92,7 @@ public class SpraysUtil
                         f.setItem(map);
                         f.setRotation(Rotation.NONE);
                         // Исправлено: Effect.ENDER_SIGNAL заменен на Particle
-                        f.getWorld().spawnParticle(Particle.PORTAL, f.getLocation(), 10);
+                        f.getWorld().spawnParticle(org.bukkit.Particle.PORTAL, f.getLocation(), 10);
                         for (final Entity en : f.getNearbyEntities(1.0, 1.0, 1.0)) {
                             if (en.getType() == EntityType.ARMOR_STAND && en.hasMetadata("HOLO_ITEM_FRAME")) {
                                 en.remove();
