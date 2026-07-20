@@ -121,7 +121,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- WorldEdit 6 (для CuboidClipboard) -->
+        <!-- WorldEdit 6 -->
         <dependency>
             <groupId>com.sk89q.worldedit</groupId>
             <artifactId>worldedit-bukkit</artifactId>
@@ -138,13 +138,13 @@
             <systemPath>${project.basedir}/lib/bedwars-plugin-25.2.jar</systemPath>
         </dependency>
 
-        <!-- BedWarsProxy (локальный jar) -->
+        <!-- BedWarsProxy -->
         <dependency>
             <groupId>com.andrei1058.bedwars</groupId>
             <artifactId>bedwars-proxy</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/bedwars-proxy.jar</systemPath>
+            <systemPath>${project.basedir}/lib/BedWarsProxy.jar</systemPath>
         </dependency>
 
         <!-- Vault API -->
@@ -216,7 +216,7 @@
             <version>3.0.2</version>
         </dependency>
 
-        <!-- Minecraft Authlib (GameProfile) -->
+        <!-- Minecraft Authlib -->
         <dependency>
             <groupId>com.mojang</groupId>
             <artifactId>authlib</artifactId>
