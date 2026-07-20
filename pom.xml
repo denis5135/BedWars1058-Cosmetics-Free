@@ -22,7 +22,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.11.0</version>
                 <configuration>
                     <source>21</source>
                     <target>21</target>
@@ -98,7 +98,6 @@
             <id>enginehub-maven</id>
             <url>https://maven.enginehub.org/repo/</url>
         </repository>
-        <!-- Репозиторий для authlib -->
         <repository>
             <id>minecraft-repo</id>
             <url>https://libraries.minecraft.net/</url>
@@ -106,7 +105,7 @@
     </repositories>
 
     <dependencies>
-        <!-- Spigot API -->
+        <!-- Spigot API 1.20.4 -->
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
@@ -122,21 +121,30 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- WorldEdit -->
+        <!-- WorldEdit 6 (для CuboidClipboard) -->
         <dependency>
             <groupId>com.sk89q.worldedit</groupId>
             <artifactId>worldedit-bukkit</artifactId>
-            <version>7.2.15</version>
+            <version>6.1.4-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
-        <!-- BedWars1058 v25.2 (локальный jar) -->
+        <!-- BedWars1058 API v25.2 (локальный jar) -->
         <dependency>
             <groupId>com.andrei1058.bedwars</groupId>
             <artifactId>bedwars-api</artifactId>
             <version>25.2</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/bedwars-plugin-25.2.jar</systemPath>
+        </dependency>
+
+        <!-- BedWarsProxy (локальный jar) -->
+        <dependency>
+            <groupId>com.andrei1058.bedwars</groupId>
+            <artifactId>bedwars-proxy</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/bedwars-proxy.jar</systemPath>
         </dependency>
 
         <!-- Vault API -->
@@ -208,7 +216,7 @@
             <version>3.0.2</version>
         </dependency>
 
-        <!-- Minecraft Authlib -->
+        <!-- Minecraft Authlib (GameProfile) -->
         <dependency>
             <groupId>com.mojang</groupId>
             <artifactId>authlib</artifactId>
