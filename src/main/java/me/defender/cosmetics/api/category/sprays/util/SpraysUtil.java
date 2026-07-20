@@ -1,5 +1,3 @@
-
-
 package me.defender.cosmetics.api.category.sprays.util;
 
 import com.cryptomorin.xseries.XMaterial;
@@ -35,7 +33,7 @@ public class SpraysUtil
 
     
     @SuppressWarnings("deprecation")
-	public static void spawnSprays( Player p, ItemFrame f) {
+    public static void spawnSprays( Player p, ItemFrame f) {
         HCore.syncScheduler().run(() -> {
             MapView view = Bukkit.createMap(p.getWorld());
             // If player is in cool down
@@ -65,7 +63,8 @@ public class SpraysUtil
                     }else {
                         view.addRenderer(renderer);
                         final ItemStack map = XMaterial.FILLED_MAP.parseItem();
-                        map.setDurability(view.getId());
+                        // Исправлено: явное приведение к short
+                        map.setDurability((short) view.getId());
                         map.setAmount(1);
                         f.setItem(map);
                         f.setRotation(Rotation.NONE);
@@ -87,11 +86,13 @@ public class SpraysUtil
                     }else {
                         view.addRenderer(renderer);
                         final ItemStack map = XMaterial.FILLED_MAP.parseItem();
-                        map.setDurability(view.getId());
+                        // Исправлено: явное приведение к short
+                        map.setDurability((short) view.getId());
                         map.setAmount(1);
                         f.setItem(map);
                         f.setRotation(Rotation.NONE);
-                        p.playEffect(f.getLocation(), Effect.ENDER_SIGNAL, null);
+                        // Исправлено: Effect.ENDER_SIGNAL заменен на Particle
+                        f.getWorld().spawnParticle(org.bukkit.Particle.ENDER_SIGNAL, f.getLocation(), 10);
                         for (final Entity en : f.getNearbyEntities(1.0, 1.0, 1.0)) {
                             if (en.getType() == EntityType.ARMOR_STAND && en.hasMetadata("HOLO_ITEM_FRAME")) {
                                 en.remove();
@@ -104,5 +105,3 @@ public class SpraysUtil
 
     }
 }
-
-
