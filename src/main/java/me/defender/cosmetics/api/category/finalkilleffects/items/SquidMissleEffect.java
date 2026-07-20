@@ -6,9 +6,9 @@ import me.defender.cosmetics.api.category.finalkilleffects.FinalKillEffect;
 import me.defender.cosmetics.api.enums.RarityType;
 import me.defender.cosmetics.api.util.Utility;
 import org.bukkit.Color;
-import org.bukkit.Effect;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
@@ -57,7 +57,7 @@ public class SquidMissleEffect extends FinalKillEffect {
     public void execute(Player killer, Player victim) {
         Location loc = victim.getLocation();
         Squid squid = (Squid) victim.getWorld().spawnEntity(loc, EntityType.SQUID);
-         ArmorStand stand = (ArmorStand) victim.getWorld().spawnEntity(loc, EntityType.ARMOR_STAND);
+        ArmorStand stand = (ArmorStand) victim.getWorld().spawnEntity(loc, EntityType.ARMOR_STAND);
         stand.setGravity(false);
         stand.setPassenger(squid);
         stand.setVisible(false);
@@ -70,7 +70,8 @@ public class SquidMissleEffect extends FinalKillEffect {
                 stand.eject();
                 stand.teleport(stand.getLocation().add(0.0, 0.5, 0.0));
                 stand.setPassenger(squid);
-                stand.getWorld().spigot().playEffect(stand.getLocation(), Particle.FLAME, 0, 0, 0.0f, 0.0f, 0.0f, 0.0f, 1, 128);
+                // Исправлено: Effect.FLAME заменен на Particle.FLAME
+                stand.getWorld().spawnParticle(Particle.FLAME, stand.getLocation(), 1, 0.0, 0.0, 0.0, 0.0);
                 victim.playSound(victim.getLocation(), XSound.ENTITY_CHICKEN_EGG.parseSound(), 1.0f, 1.0f);
                 if (this.i1 == 13) {
                     final Firework fw = stand.getWorld().spawn(stand.getLocation(), Firework.class);
