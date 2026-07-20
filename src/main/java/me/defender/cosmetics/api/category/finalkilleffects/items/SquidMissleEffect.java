@@ -70,7 +70,7 @@ public class SquidMissleEffect extends FinalKillEffect {
                 stand.eject();
                 stand.teleport(stand.getLocation().add(0.0, 0.5, 0.0));
                 stand.setPassenger(squid);
-                stand.getWorld().spigot().playEffect(stand.getLocation(), Effect.FLAME, 0, 0, 0.0f, 0.0f, 0.0f, 0.0f, 1, 128);
+                stand.getWorld().spigot().playEffect(stand.getLocation(), Particle.FLAME, 0, 0, 0.0f, 0.0f, 0.0f, 0.0f, 1, 128);
                 victim.playSound(victim.getLocation(), XSound.ENTITY_CHICKEN_EGG.parseSound(), 1.0f, 1.0f);
                 if (this.i1 == 13) {
                     final Firework fw = stand.getWorld().spawn(stand.getLocation(), Firework.class);
