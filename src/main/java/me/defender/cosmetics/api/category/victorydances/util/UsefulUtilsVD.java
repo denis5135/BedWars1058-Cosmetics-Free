@@ -1,5 +1,3 @@
-
-
 package me.defender.cosmetics.api.category.victorydances.util;
 
 import com.mojang.authlib.GameProfile;
@@ -26,7 +24,7 @@ import java.util.stream.Collectors;
 public class UsefulUtilsVD
 {
     @SuppressWarnings("deprecation")
-	public static void bounceBlock(final Block b) {
+    public static void bounceBlock(final Block b) {
         if (b == null) {
             return;
         }
@@ -100,7 +98,8 @@ public class UsefulUtilsVD
     }
     
     public static ItemStack gethead(final String value, final String name) {
-        final ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (short)3);
+        // Исправлено: Material.SKULL_ITEM заменен на Material.PLAYER_HEAD
+        final ItemStack head = new ItemStack(Material.PLAYER_HEAD, 1);
         final SkullMeta meta = (SkullMeta)head.getItemMeta();
         GameProfile profile = new GameProfile(UUID.randomUUID(), "");
         profile.getProperties().put("textures", new Property("textures", value));
