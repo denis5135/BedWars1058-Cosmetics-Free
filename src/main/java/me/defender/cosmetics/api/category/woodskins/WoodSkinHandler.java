@@ -49,7 +49,7 @@ public class WoodSkinHandler implements Listener
     @EventHandler
     public void onBuy(ShopBuyEvent e) {
         Player p = e.getBuyer();
-        if (e.getCategoryContent().getItemStack(p).getType() == Material.WOOD) {
+        if (e.getCategoryContent().getItemStack(p).getType() == Material.OAK_PLANKS) {
              String selected = new BwcAPI().getSelectedCosmetic(p, CosmeticsType.WoodSkins);
             
             BedWars bedwarsAPI = new BwcAPI().getBwAPI();
