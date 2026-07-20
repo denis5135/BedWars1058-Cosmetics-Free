@@ -1,12 +1,9 @@
-
-
 package me.defender.cosmetics.api.category.woodskins;
 
 import com.andrei1058.bedwars.api.BedWars;
 import com.andrei1058.bedwars.api.events.shop.ShopBuyEvent;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
-import com.cryptomorin.xseries.XTag;
 import com.hakan.core.utils.ColorUtil;
 import me.defender.cosmetics.api.BwcAPI;
 import me.defender.cosmetics.api.enums.CosmeticsType;
@@ -27,28 +24,31 @@ import java.io.File;
 public class WoodSkinHandler implements Listener
 {
 
-	@EventHandler
+    @EventHandler
     public void onBlockPlace(BlockPlaceEvent e) {
         if (e.isCancelled()) return;
-        if(!XTag.PLANKS.isTagged(XMaterial.matchXMaterial(e.getBlock().getType())) || !XTag.LOGS.isTagged(XMaterial.matchXMaterial(e.getBlock().getType()))) return;
+        // Исправлено: убраны устаревшие XTag.PLANKS и XTag.LOGS
+        Material blockType = e.getBlock().getType();
+        if (!blockType.name().contains("PLANKS") && !blockType.name().contains("LOG")) return;
+        
         String selected = new BwcAPI().getSelectedCosmetic(e.getPlayer(), CosmeticsType.WoodSkins);
         for(WoodSkin woodSkin : StartupUtils.woodSkinsList){
             if(woodSkin.getIdentifier().equals(selected)){
                 ItemStack stack = woodSkin.woodSkin();
-                byte data = Byte.parseByte(String.valueOf(stack.getDurability()));
                 Material type = stack.getType();
-                if(e.getBlock().getType() != type) e.getBlock().setType(type);
-                if(e.getBlock().getData() != data) e.getBlock().setData(data);
+                if(e.getBlock().getType() != type) {
+                    e.getBlock().setType(type);
+                }
+                // setData() и getData() удалены в 1.13+
             }
         }
-
-
     }
 
 
     @EventHandler
     public void onBuy(ShopBuyEvent e) {
         Player p = e.getBuyer();
+        // Исправлено: Material.OAK_PLANKS вместо Material.WOOD
         if (e.getCategoryContent().getItemStack(p).getType() == Material.OAK_PLANKS) {
              String selected = new BwcAPI().getSelectedCosmetic(p, CosmeticsType.WoodSkins);
             
@@ -66,10 +66,10 @@ public class WoodSkinHandler implements Listener
             Material m = bedwarsAPI.getShopUtil().getCurrency(currency);
             int have = bedwarsAPI.getShopUtil().calculateMoney(p, m);
             String cost1 = cost + "";
-            		
+                    
             if(have < cost) {
-         	   p.sendMessage(ColorUtil.colored(nopemsg).replace("{prefix}", prefix).replace("{currency}", currency).replace("{amount}", cost1));
-         	   return;
+               p.sendMessage(ColorUtil.colored(nopemsg).replace("{prefix}", prefix).replace("{currency}", currency).replace("{amount}", cost1));
+               return;
             }
             bedwarsAPI.getShopUtil().takeMoney(p, m, cost);
 
