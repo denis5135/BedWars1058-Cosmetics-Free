@@ -91,7 +91,7 @@ public class SpraysUtil
                         map.setAmount(1);
                         f.setItem(map);
                         f.setRotation(Rotation.NONE);
-                        p.playEffect(f.getLocation(), Effect.FLYING_GLYPH, 10);
+                        p.playEffect(f.getLocation(), Effect.ENDER_SIGNAL, null);
                         for (final Entity en : f.getNearbyEntities(1.0, 1.0, 1.0)) {
                             if (en.getType() == EntityType.ARMOR_STAND && en.hasMetadata("HOLO_ITEM_FRAME")) {
                                 en.remove();
